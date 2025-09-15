@@ -13,4 +13,13 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get selectLanguage => 'Select Language bn';
+
+  @override
+  String get version => 'Version bn';
+
+  @override
+  String get welcomeBack => 'Welcome Back bn';
+
+  @override
+  String get loginHeadline => 'Please enter your email and password bn';
 }
