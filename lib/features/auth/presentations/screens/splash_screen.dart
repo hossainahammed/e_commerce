@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(context.localization.hello),
-            LanguageChangeSwitch(),
+           //LanguageChangeSwitch(),
           ],
         ),
       ),
