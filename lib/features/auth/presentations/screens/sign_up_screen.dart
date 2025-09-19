@@ -1,5 +1,6 @@
 import 'package:e_commerce/app/app_colors.dart';
 import 'package:e_commerce/app/extensions/localization_extension.dart';
+import 'package:e_commerce/features/auth/presentations/screens/verity_otp_screen.dart';
 import 'package:e_commerce/features/auth/presentations/widgets/app_logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _onTapSignUpButton() {
-  //  Navigator.pushNamed(context, VerifyOtpScreen.name);
+    Navigator.pushNamed(context, VerifyOtpScreen.name);
   }
 
   void _onTapBackToLoginButton() {
