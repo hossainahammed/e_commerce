@@ -42,7 +42,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                   keyboardType: TextInputType.number,
                   pinTheme: PinTheme(shape: PinCodeFieldShape.box),
                   animationType: AnimationType.fade,
-                  animationDuration: Duration(milliseconds: 300),
+                  animationDuration: Duration(milliseconds: 200),
                   appContext: context,
                   controller: _otpTEController,
                 ),
