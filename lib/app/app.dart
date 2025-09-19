@@ -2,6 +2,7 @@ import 'package:e_commerce/app/app_colors.dart';
 import 'package:e_commerce/app/app_theme.dart';
 import 'package:e_commerce/app/controllers/language_controller.dart';
 import 'package:e_commerce/features/auth/presentations/screens/sign_in_screen.dart';
+import 'package:e_commerce/features/auth/presentations/screens/sign_up_screen.dart';
 import 'package:e_commerce/features/auth/presentations/screens/splash_screen.dart';
 import 'package:e_commerce/l10n/app_localizations.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
@@ -56,6 +57,9 @@ class _CraftyBayState extends State<CraftyBay> {
         }
         else if (settings.name == SignInScreen.name){
           screen = SignInScreen();
+        }
+        else if (settings.name == SignUpScreen.name){
+          screen = SignUpScreen();
         }
         return MaterialPageRoute(builder: (ctx)=>screen);
       },
