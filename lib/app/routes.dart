@@ -1,7 +1,12 @@
+import 'package:e_commerce/features/auth/presentations/screens/sign_in_screen.dart';
+import 'package:e_commerce/features/auth/presentations/screens/sign_up_screen.dart';
+import 'package:e_commerce/features/auth/presentations/screens/splash_screen.dart';
 import 'package:e_commerce/features/auth/presentations/screens/verity_otp_screen.dart';
 import 'package:flutter/material.dart';
 
-Route<dynamic>? Function(RouteSettings)? onGenerateRoute (RouteSettings settings){
+import '../features/shared/presentations/screens/bottom_nav_holder_screen.dart';
+
+MaterialPageRoute onGenerateRoute (RouteSettings settings){
   late Widget screen;
   if(settings.name==SplashScreen.name){
     screen = SplashScreen();
@@ -14,6 +19,9 @@ Route<dynamic>? Function(RouteSettings)? onGenerateRoute (RouteSettings settings
   }
   else if (settings.name == VerifyOtpScreen.name){
     screen = VerifyOtpScreen();
+  }
+  else if (settings.name == BottomNavHolderScreen.name){
+    screen = BottomNavHolderScreen();
   }
   return MaterialPageRoute(builder: (ctx)=>screen);
 }
