@@ -1,5 +1,8 @@
+import 'package:carousel_slider/carousel_slider.dart';
+import 'package:e_commerce/app/app_colors.dart';
 import 'package:e_commerce/app/asset_paths.dart';
 import 'package:e_commerce/features/home/presentation/widgets/app_bar_icon_button.dart';
+import 'package:e_commerce/features/home/presentation/widgets/home_banner_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -30,6 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             const SizedBox(height: 16,),
+            _buildSearchBar(),
+            const SizedBox(height: 16,),
+            HomeBannerSlider()
 
           ],
         ),
@@ -56,3 +62,5 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
