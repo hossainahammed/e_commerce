@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             const SizedBox(height: 16,),
             _buildSearchBar(),
-            const SizedBox(height: 17,),
+            const SizedBox(height: 16,),
             HomeBannerSlider()
 
           ],
