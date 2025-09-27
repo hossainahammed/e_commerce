@@ -35,14 +35,49 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(height: 16,),
             _buildSearchBar(),
             const SizedBox(height: 16,),
-            HomeBannerSlider()
-
+            HomeBannerSlider(),
+            const SizedBox(height: 16,),
+            _buildSectionHeader (
+              title: 'Categories',
+              onTapSeeAll: (){},
+            ),
+            Column(
+              spacing: 6,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: AppColors.themeColor.withOpacity(0.15),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Icon(Icons.computer,size: 32,color: AppColors.themeColor,),
+                ),
+                Text('Electronics',style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: AppColors.themeColor))
+              ],
+            ),
+            _buildSectionHeader (
+              title: 'New',
+              onTapSeeAll: (){},
+            ),
+            _buildSectionHeader (
+              title: 'Popular',
+              onTapSeeAll: (){},
+            ),
           ],
         ),
       ),
     );
   }
 
+  Widget _buildSectionHeader({ required String title, required VoidCallback onTapSeeAll}){
+    return Row(
+  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  children: [
+  Text (title,style: Theme.of(context).textTheme.titleMedium,),
+  TextButton(onPressed: onTapSeeAll, child: Text('See all'))
+  ],
+  );
+}
   Widget _buildSearchBar(){
     return TextField(
       onSubmitted: (String? text){},
