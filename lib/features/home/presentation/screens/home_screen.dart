@@ -1,10 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_commerce/app/app_colors.dart';
 import 'package:e_commerce/app/asset_paths.dart';
+import 'package:e_commerce/app/utils/constant.dart';
 import 'package:e_commerce/features/home/presentation/widgets/app_bar_icon_button.dart';
 import 'package:e_commerce/features/home/presentation/widgets/home_banner_slider.dart';
 import 'package:e_commerce/features/shared/presentations/controllers/main_nav_controller.dart';
 import 'package:e_commerce/features/shared/presentations/widgets/Product_category_item.dart';
+import 'package:e_commerce/features/shared/presentations/widgets/product_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -48,6 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
               _buildCategoryList(),
               _buildSectionHeader(title: 'New', onTapSeeAll: () {}),
+              productCard(),
               _buildSectionHeader(title: 'Popular', onTapSeeAll: () {}),
             ],
           ),
@@ -100,5 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
+
 
 
