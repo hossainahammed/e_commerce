@@ -50,8 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
               }),
               _buildCategoryList(),
               _buildSectionHeader(title: 'New', onTapSeeAll: () {}),
-              productCard(),
+              _buildNewProductList(),
+              //productCard(),
               _buildSectionHeader(title: 'Popular', onTapSeeAll: () {}),
+              _buildPopularProductList(),
+
+              _buildSectionHeader(title: 'Special', onTapSeeAll: () {}),
+              _buildSpecialProductList(),
             ],
           ),
         ),
@@ -75,6 +80,33 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+  Widget _buildNewProductList(){
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [1,2,3,4,5,6,].map((e)=> productCard()).toList(),
+      ),
+    );
+  }
+  Widget _buildPopularProductList(){
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [1,2,3,4,5,6,].map((e)=> productCard()).toList(),
+      ),
+    );
+  }
+
+  Widget _buildSpecialProductList(){
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [1,2,3,4,5,6,].map((e)=> productCard()).toList(),
+      ),
+    );
+  }
+
   Widget _buildSectionHeader({
     required String title,
     required VoidCallback onTapSeeAll,
