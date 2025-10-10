@@ -18,7 +18,7 @@ class _ProductDetailsScreensState extends State<ProductDetailsScreens> {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Scaffold(
-      appBar: AppBar(title:Text( 'Product Detail')),
+      appBar: AppBar(title:Text( 'Product Details')),
       body: Column(
         children: [
           Expanded(child: Column(children: [
