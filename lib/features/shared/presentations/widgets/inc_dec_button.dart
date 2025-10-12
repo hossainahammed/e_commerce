@@ -15,10 +15,25 @@ class _IncDecButtonState extends State<IncDecButton> {
       children: [
         Container(
           decoration: BoxDecoration(
-            color: AppColors.themeColor
+            color: AppColors.themeColor,
+            borderRadius: BorderRadius.circular(4)
           ),
-          child: Icon(Icons.remove),
-        )
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Icon(Icons.remove,color: Colors.white,),
+          ),
+        ),
+        Text('1'),
+        Container(
+          decoration: BoxDecoration(
+              color: AppColors.themeColor,
+              borderRadius: BorderRadius.circular(4)
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Icon(Icons.add,color: Colors.white,),
+          ),
+        ),
       ],
     );
   }

@@ -79,6 +79,8 @@ class _ProductDetailsScreensState extends State<ProductDetailsScreens> {
                               ),
                             ],
                           ),
+                          IncDecButton()
+
                         ],
                       )
 
