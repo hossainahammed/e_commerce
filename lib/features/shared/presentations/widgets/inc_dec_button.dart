@@ -12,6 +12,7 @@ class _IncDecButtonState extends State<IncDecButton> {
   @override
   Widget build(BuildContext context) {
     return Row(
+      spacing: 4,
       children: [
         Container(
           decoration: BoxDecoration(
@@ -23,7 +24,7 @@ class _IncDecButtonState extends State<IncDecButton> {
             child: Icon(Icons.remove,color: Colors.white,),
           ),
         ),
-        Text('1'),
+        Text('1',style: Theme.of(context).textTheme.titleLarge),
         Container(
           decoration: BoxDecoration(
               color: AppColors.themeColor,

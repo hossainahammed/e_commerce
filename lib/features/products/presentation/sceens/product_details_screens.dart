@@ -32,54 +32,59 @@ class _ProductDetailsScreensState extends State<ProductDetailsScreens> {
                   child: Column(
                     children:[
                       Row(
+                        spacing: 8,
                         children: [
-                          Column(
-                            children: [
-                              Text(
-                                'Nike A123 - New Edition of Jordan Sports',
-                                style: textTheme.bodyLarge?.copyWith(
-                                  fontWeight: FontWeight.w600,
+                          Expanded(
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Nike A123 - New Edition of Jordan Sports',
+                                  style: textTheme.bodyLarge?.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 8),
-                              Row(
-                                children: [
-                                  Wrap(
-                                    crossAxisAlignment: WrapCrossAlignment.center,
-                                    children: const [
-                                      Icon(
-                                        Icons.star,
-                                        size: 24,
-                                        color: Colors.amber,
-                                      ),
-                                      SizedBox(width: 4),
-                                      Text('4.2', style: TextStyle(fontSize: 18)),
-                                    ],
-                                  ),
-                                  TextButton(
-                                    onPressed: () {},
-                                    child: const Text('Reviews'),
-                                  ),
-                                  const Spacer(),
-                                  Card(
-                                    color: AppColors.themeColor,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(4),
+                                const SizedBox(height: 8),
+                                Row(
+                                  children: [
+                                    Wrap(
+                                      crossAxisAlignment: WrapCrossAlignment.center,
+                                      children: const [
+                                        Icon(
+                                          Icons.star,
+                                          size: 24,
+                                          color: Colors.amber,
+                                        ),
+                                        SizedBox(width: 4),
+                                        Text('4.2', style: TextStyle(fontSize: 18)),
+                                      ],
                                     ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.all(4.0),
-                                      child: Icon(
-                                        Icons.favorite_outline,
-                                        size: 18,
-                                        color: Colors.white,
+                                    TextButton(
+                                      onPressed: () {},
+                                      child: const Text('Reviews'),
+                                    ),
+                                    const Spacer(),
+                                    Card(
+                                      color: AppColors.themeColor,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(4),
+                                      ),
+                                      child: const Padding(
+                                        padding: EdgeInsets.all(4.0),
+                                        child: Icon(
+                                          Icons.favorite_outline,
+                                          size: 18,
+                                          color: Colors.white,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ],
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                          IncDecButton()
+                          SizedBox(
+                              width:90,
+                              child: IncDecButton())
 
                         ],
                       )
