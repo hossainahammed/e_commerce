@@ -30,51 +30,61 @@ class _ProductDetailsScreensState extends State<ProductDetailsScreens> {
                 Padding(
                   padding: const EdgeInsets.all(16),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Nike A123 - New Edition of Jordan Sports',
-                        style: textTheme.bodyLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
+                    children:[
                       Row(
                         children: [
-                          Wrap(
-                            crossAxisAlignment: WrapCrossAlignment.center,
-                            children: const [
-                              Icon(
-                                Icons.star,
-                                size: 24,
-                                color: Colors.amber,
+                          Column(
+                            children: [
+                              Text(
+                                'Nike A123 - New Edition of Jordan Sports',
+                                style: textTheme.bodyLarge?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
                               ),
-                              SizedBox(width: 4),
-                              Text('4.2', style: TextStyle(fontSize: 18)),
+                              const SizedBox(height: 8),
+                              Row(
+                                children: [
+                                  Wrap(
+                                    crossAxisAlignment: WrapCrossAlignment.center,
+                                    children: const [
+                                      Icon(
+                                        Icons.star,
+                                        size: 24,
+                                        color: Colors.amber,
+                                      ),
+                                      SizedBox(width: 4),
+                                      Text('4.2', style: TextStyle(fontSize: 18)),
+                                    ],
+                                  ),
+                                  TextButton(
+                                    onPressed: () {},
+                                    child: const Text('Reviews'),
+                                  ),
+                                  const Spacer(),
+                                  Card(
+                                    color: AppColors.themeColor,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4),
+                                    ),
+                                    child: const Padding(
+                                      padding: EdgeInsets.all(4.0),
+                                      child: Icon(
+                                        Icons.favorite_outline,
+                                        size: 18,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ],
                           ),
-                          TextButton(
-                            onPressed: () {},
-                            child: const Text('Reviews'),
-                          ),
-                          const Spacer(),
-                          Card(
-                            color: AppColors.themeColor,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(4),
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(4.0),
-                              child: Icon(
-                                Icons.favorite_outline,
-                                size: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
                         ],
-                      ),
+                      )
+
                     ],
+                    crossAxisAlignment: CrossAxisAlignment.start,
+
                   ),
                 ),
               ],
