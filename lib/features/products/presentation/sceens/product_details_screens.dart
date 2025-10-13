@@ -16,6 +16,8 @@ class ProductDetailsScreens extends StatefulWidget {
 }
 
 class _ProductDetailsScreensState extends State<ProductDetailsScreens> {
+
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -83,8 +85,8 @@ class _ProductDetailsScreensState extends State<ProductDetailsScreens> {
                             ),
                           ),
                           SizedBox(
-                              width:90,
-                              child: IncDecButton()),
+                              width:80,
+                              child: IncDecButton(onChange: (int  value) {  },)),
 
                         ],
                       )
