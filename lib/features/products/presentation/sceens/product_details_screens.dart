@@ -84,7 +84,7 @@ class _ProductDetailsScreensState extends State<ProductDetailsScreens> {
                           ),
                           SizedBox(
                               width:90,
-                              child: IncDecButton())
+                              child: IncDecButton()),
 
                         ],
                       )
