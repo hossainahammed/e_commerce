@@ -33,7 +33,7 @@ class _BottomNavHolderScreenState extends State<BottomNavHolderScreen> {
             selectedIndex: mainNavController.currentIndex,
             onDestinationSelected: mainNavController.changeIndex,
             destinations: [
-              NavigationDestination(icon: Icon(Icons.home), label: 'Homee'),
+              NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
               NavigationDestination(
                 icon: Icon(Icons.dashboard_customize_outlined),
                 label: 'Categories',
