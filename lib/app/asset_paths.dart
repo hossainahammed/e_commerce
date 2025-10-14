@@ -4,5 +4,5 @@ class AssethPaths {
 
   static const String logoSvg = '$_imagePath/logo.svg';
   static const String logoNavSvg = '$_imagePath/logo_nav.svg';
-  static const String shoeImgSvg = '$_imagePath/shoe.png';
+  static const String shoeImgPng = '$_imagePath/shoe.png';
 }
