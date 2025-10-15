@@ -17,6 +17,8 @@ import 'package:get/get.dart';
 class CraftyBay extends StatefulWidget {
   const CraftyBay({super.key});
 
+  static final GlobalKey<NavigatorState> navigatorKey =
+      GlobalKey<NavigatorState>();
   static final LanguageController languageController = LanguageController();
   @override
   State<CraftyBay> createState() => _CraftyBayState();
@@ -24,42 +26,37 @@ class CraftyBay extends StatefulWidget {
 
 class _CraftyBayState extends State<CraftyBay> {
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer =
-  FirebaseAnalyticsObserver(analytics: analytics);
-
-
-
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(
+    analytics: analytics,
+  );
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder(
-        init: CraftyBay.languageController,
-        builder: (languageController){
-
-
-    return GetMaterialApp(
-      title: 'Localizations Sample App',
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        AppLocalizations.delegate, // Add your generated localization delegate here
-      ],
-      supportedLocales: languageController.supportedLocales,
-      navigatorObservers: [observer],
-      locale: languageController.currentLocale,
-      theme: AppTheme.lightThemeData,
-      darkTheme: AppTheme.darkThemeData,
-      themeMode: ThemeMode.light,
-      home:SplashScreen(),
-      initialRoute: SplashScreen.name,
-      onGenerateRoute: onGenerateRoute,
-      initialBinding: ControllerBinding(),
-
+      init: CraftyBay.languageController,
+      builder: (languageController) {
+        return GetMaterialApp(
+          navigatorKey: CraftyBay.navigatorKey,
+          title: 'Localizations Sample App',
+          localizationsDelegates: const [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            AppLocalizations
+                .delegate, // Add your generated localization delegate here
+          ],
+          supportedLocales: languageController.supportedLocales,
+          navigatorObservers: [observer],
+          locale: languageController.currentLocale,
+          theme: AppTheme.lightThemeData,
+          darkTheme: AppTheme.darkThemeData,
+          themeMode: ThemeMode.light,
+          home: SplashScreen(),
+          initialRoute: SplashScreen.name,
+          onGenerateRoute: onGenerateRoute,
+          initialBinding: ControllerBinding(),
+        );
+      },
     );
-    });
   }
 }
-
-
-
