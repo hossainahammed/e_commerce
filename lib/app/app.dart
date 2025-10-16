@@ -37,7 +37,7 @@ class _CraftyBayState extends State<CraftyBay> {
       builder: (languageController) {
         return GetMaterialApp(
           navigatorKey: CraftyBay.navigatorKey,
-          title: 'Localizations Sample App',
+          title: 'Localizations Samplee App',
           localizationsDelegates: const [
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
