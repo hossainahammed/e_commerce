@@ -2,6 +2,7 @@ import 'package:e_commerce/app/asset_paths.dart';
 import 'package:e_commerce/app/extensions/localization_extension.dart';
 import 'package:e_commerce/app/utils/app_version_service.dart';
 import 'package:e_commerce/features/auth/presentations/screens/sign_in_screen.dart';
+import 'package:e_commerce/features/auth/presentations/screens/sign_up_screen.dart';
 import 'package:e_commerce/features/auth/presentations/widgets/app_logo.dart';
 import 'package:e_commerce/features/shared/presentations/screens/bottom_nav_holder_screen.dart';
 import 'package:e_commerce/features/shared/presentations/widgets/language_change_switch.dart';
@@ -27,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
   }
  Future<void> _moveToNextScreen()async{
     await Future.delayed(Duration(seconds:3 ));
-    Navigator.pushReplacementNamed(context, BottomNavHolderScreen.name);
+    Navigator.pushReplacementNamed(context, SignUpScreen.name);
  }
   @override
   Widget build(BuildContext context) {

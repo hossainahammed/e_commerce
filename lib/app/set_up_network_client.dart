@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 NetworkCaller setUpNetworkClient() {
-  return NetworkCaller(onUnAuthorize: _onUnAuthorize, accessToken:'' );
+  return NetworkCaller(onUnAuthorize: _onUnAuthorize, accessToken: () => '', );
 
 }
 

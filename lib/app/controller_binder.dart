@@ -1,6 +1,9 @@
 import 'package:e_commerce/app/set_up_network_client.dart';
+import 'package:e_commerce/features/auth/presentations/controllers/sign_up_controller.dart';
 import 'package:e_commerce/features/shared/presentations/controllers/main_nav_controller.dart';
 import 'package:get/get.dart';
+
+
 
 class ControllerBinding extends Bindings{
   @override
@@ -8,7 +11,7 @@ class ControllerBinding extends Bindings{
    // Get.put(AuthController());
     Get.put(MainNavController());
     Get.put(setUpNetworkClient());
-    //Get.put(SignUpController());
+    Get.put(SignUpController());
     // Get.put(VerifyOtpController());
     // Get.put(LoginController());
     // Get.put(HomeSliderController());
