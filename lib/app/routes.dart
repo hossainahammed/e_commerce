@@ -20,13 +20,14 @@ MaterialPageRoute onGenerateRoute (RouteSettings settings){
     screen = SignUpScreen();
   }
   else if (settings.name == VerifyOtpScreen.name){
-    screen = VerifyOtpScreen();
+     final String email = settings.arguments as String;
+    screen = VerifyOtpScreen(email:email);
   }
   else if (settings.name == BottomNavHolderScreen.name){
     screen = BottomNavHolderScreen();
   }
   else if (settings.name == ProductListScreen.name){
-     final String category = settings.arguments as String ;
+     final String category = settings.arguments as String;
     screen = ProductListScreen(categoryName: category,);
   }
   else if (settings.name == ProductDetailsScreens.name){
