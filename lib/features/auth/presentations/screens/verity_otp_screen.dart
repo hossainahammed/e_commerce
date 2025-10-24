@@ -44,7 +44,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                 const SizedBox(height: 24),
                 Text('Verify OTP', style: textTheme.titleLarge),
                 Text(
-                  'A 6 digits OTP has been sent to your email addres',
+                  'A 6 digits OTP has been sent to your email address',
                   style: textTheme.bodyLarge?.copyWith(color: Colors.grey),
                 ),
                 const SizedBox(height: 24),
