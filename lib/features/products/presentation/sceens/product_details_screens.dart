@@ -1,140 +1,187 @@
 import 'package:e_commerce/app/app_colors.dart';
-import 'package:e_commerce/app/utils/constant.dart';
+import 'package:e_commerce/features/products/presentation/controllers/product_details_controller.dart';
 import 'package:e_commerce/features/products/presentation/widgets/colror_picker.dart';
 import 'package:e_commerce/features/products/presentation/widgets/product_image_slider.dart';
 import 'package:e_commerce/features/products/presentation/widgets/size_picker.dart';
+import 'package:e_commerce/features/shared/presentations/widgets/centered_circular_progress.dart';
 import 'package:e_commerce/features/shared/presentations/widgets/inc_dec_button.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 import '../widgets/total_price_and_cart_section.dart';
 
-class ProductDetailsScreens extends StatefulWidget {
-  const ProductDetailsScreens({super.key});
+class ProductDetailsScreen extends StatefulWidget {
+  const ProductDetailsScreen({super.key, required this.productId});
 
   static const String name = '/product-details';
 
+  final String productId;
+
   @override
-  State<ProductDetailsScreens> createState() => _ProductDetailsScreensState();
+  State<ProductDetailsScreen> createState() => _ProductDetailsScreenState();
 }
 
-class _ProductDetailsScreensState extends State<ProductDetailsScreens> {
+class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
+  final ProductDetailsController _productDetailsController =
+  ProductDetailsController();
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _productDetailsController.getProductDetails(widget.productId);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
-      appBar: AppBar(title: const Text('Product Details')),
-      body: Column(
-        children: [
-          SingleChildScrollView(
-            child: Expanded(
-              child: Column(
-                children: [
-                  const ProductImageSlider(),
-                  Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Column(
-                      spacing: 8,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          spacing: 8,
+      appBar: AppBar(title: Text('Product Details')),
+      body: GetBuilder(
+        init: _productDetailsController,
+        builder: (controller) {
+          if (controller.getProductDetailsInProgress) {
+            return CenteredCircularProgress();
+          }
+
+          if (controller.errorMessage != null) {
+            return Center(child: Text(controller.errorMessage!));
+          }
+
+          return Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      ProductImageSlider(
+                        //imageUrls: controller.productDetails?.photos ?? [],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Expanded(
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'Nike A123 - New Edition of Jordan Sports',
-                                    style: textTheme.bodyLarge?.copyWith(
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  const SizedBox(height: 8),
-                                  Row(
+                            Row(
+                              spacing: 8,
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
                                     children: [
-                                      Wrap(
-                                        crossAxisAlignment:
-                                            WrapCrossAlignment.center,
-                                        children: const [
-                                          Icon(
-                                            Icons.star,
-                                            size: 24,
-                                            color: Colors.amber,
+                                      Text(
+                                        controller.productDetails?.title ?? '',
+                                        style: textTheme.bodyLarge?.copyWith(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Row(
+                                        children: [
+                                          Wrap(
+                                            children: [
+                                              Icon(
+                                                Icons.star,
+                                                size: 24,
+                                                color: Colors.amber,
+                                              ),
+                                              Text(
+                                                controller
+                                                    .productDetails
+                                                    ?.rating ??
+                                                    '',
+                                                style: TextStyle(fontSize: 18),
+                                              ),
+                                            ],
                                           ),
-                                          SizedBox(width: 4),
-                                          Text(
-                                            '4.2',
-                                            style: TextStyle(fontSize: 18),
+                                          TextButton(
+                                            onPressed: () {},
+                                            child: Text('Reviews'),
+                                          ),
+                                          Card(
+                                            color: AppColors.themeColor,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                              BorderRadius.circular(4),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(2),
+                                              child: Icon(
+                                                Icons.favorite_outline,
+                                                size: 18,
+                                                color: Colors.white,
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: const Text('Reviews'),
-                                      ),
-                                     // const Spacer(),
-            
-                                      Card(
-                                        color: AppColors.themeColor,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(4),
-                                        ),
-            
-                                        child: const Padding(
-                                          padding: EdgeInsets.all(4.0),
-                                          child: Icon(
-                                            Icons.favorite_outline,
-                                            size: 18,
-                                            color: Colors.white,
-                                          ),
-                                        ),
-                                      ),
                                     ],
                                   ),
-                                ],
+                                ),
+                                SizedBox(
+                                  width: 80,
+                                  child: IncDecButton(onChange: (int value) {}),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            Visibility(
+                              visible: (controller.productDetails?.colors ?? [])
+                                  .isNotEmpty,
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 12),
+                                child: Text(
+                                  'Color',
+                                  style: TextStyle(fontSize: 18),
+                                ),
                               ),
                             ),
-                            SizedBox(
-                              width: 80,
-                              child: IncDecButton(onChange: (int value) {}),
+                            const SizedBox(height: 8),
+                            ColorPicker(
+                              colors: controller.productDetails?.colors ?? [],
+                              onSelected: (String color) {},
+                            ),
+                            const SizedBox(height: 16),
+                            Visibility(
+                              visible: (controller.productDetails?.sizes ?? [])
+                                  .isNotEmpty,
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 12),
+                                child: Text(
+                                  'Size',
+                                  style: TextStyle(fontSize: 18),
+                                ),
+                              ),
+                            ),
+                            SizePicker(
+                              sizes: controller.productDetails?.sizes ?? [],
+                              onSelected: (String size) {},
+                            ),
+                            const SizedBox(height: 16),
+                            Text('Description', style: TextStyle(fontSize: 18)),
+                            Text(
+                              controller.productDetails?.description ?? '',
+                              style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey,
+                              ),
                             ),
                           ],
                         ),
-                        Text('Color',style: TextStyle(
-                          fontSize: 18,
-                        ),),
-                        ColorPicker(
-                          colors: ['Red', 'White', 'Black'],
-                          onSelected: (String color) {},
-                        ),
-                        const SizedBox(height: 8,),
-                        Text('Size',style: TextStyle(
-                          fontSize: 18,
-                        ),),
-                       SizePicker(
-                          sizes: ['S', 'M', 'L','XL','XXL'],
-                          onSelected: (String size) {},
-                        ),
-                        const SizedBox(height: 8,),
-                        Text('Description',style: TextStyle(
-                          fontSize: 18,
-                        ),),
-                        Text('''Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.''',style: TextStyle(
-                          fontSize: 14 ,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.grey
-                        ),)
-            
-                      ],
-            
-                      //crossAxisAlignment: CrossAxisAlignment.start,
-                    ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-          const TotalPriceAndCartSection(),
-        ],
+              TotalPriceAndCartSection(
+              //productModel: controller.productDetails!,
+              ),
+            ],
+          );
+        },
       ),
     );
   }

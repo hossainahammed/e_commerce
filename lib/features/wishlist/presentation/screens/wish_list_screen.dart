@@ -23,7 +23,7 @@ class _WishtListScreenState extends State<WishtListScreen> {
             mainAxisSpacing: 8
         ),
         itemBuilder: ( context,  index) {
-          return FittedBox(child: productCard());
+         // return FittedBox(child: productCard());
         },
       ),
     );
