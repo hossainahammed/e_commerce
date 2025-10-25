@@ -1,3 +1,4 @@
+import 'package:e_commerce/app/controllers/auth_controller.dart';
 import 'package:e_commerce/app/set_up_network_client.dart';
 import 'package:e_commerce/features/auth/presentations/controllers/sign_up_controller.dart';
 import 'package:e_commerce/features/shared/presentations/controllers/main_nav_controller.dart';
@@ -10,7 +11,7 @@ import '../features/auth/presentations/controllers/verify_otp_controller.dart';
 class ControllerBinding extends Bindings{
   @override
   void dependencies(){
-   // Get.put(AuthController());
+    Get.put(AuthController());
     Get.put(MainNavController());
     Get.put(setUpNetworkClient());
     Get.put(SignUpController());

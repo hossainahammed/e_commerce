@@ -1,3 +1,4 @@
+import 'package:e_commerce/app/controllers/auth_controller.dart';
 import 'package:e_commerce/features/auth/data/models/verify_otp_request_model.dart';
 import 'package:e_commerce/features/auth/presentations/controllers/verify_otp_controller.dart';
 import 'package:e_commerce/features/auth/presentations/screens/sign_in_screen.dart';
@@ -94,10 +95,10 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
         email: widget.email, otp: _otpTEController.text);
     final bool isSuccess = await _verifyOtpController.verifyOtp(model);
     if (isSuccess) {
-      // await Get.find<AuthController>().saveUserData(
-      //     _verifyOtpController.userModel!, _verifyOtpController.accessToken!);
-      // Navigator.pushNamedAndRemoveUntil(
-      //     context, BottomNavHolderScreen.name, (predicate) => false);
+      await Get.find<AuthController>().saveUserData(
+          _verifyOtpController.userModel!, _verifyOtpController.accessToken!);
+      Navigator.pushNamedAndRemoveUntil(
+          context, BottomNavHolderScreen.name, (predicate) => false);
     } else {
       showSnackBarMessage(context, _verifyOtpController.errorMessage!);
     }
