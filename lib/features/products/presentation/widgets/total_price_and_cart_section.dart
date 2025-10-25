@@ -3,14 +3,17 @@ import 'package:e_commerce/app/controllers/auth_controller.dart';
 import 'package:e_commerce/app/utils/constant.dart';
 import 'package:e_commerce/features/auth/presentations/screens/sign_in_screen.dart';
 import 'package:e_commerce/features/products/presentation/controllers/add_to_cart_controller.dart';
+import 'package:e_commerce/features/shared/data/models/product_details_model.dart';
+import 'package:e_commerce/features/shared/presentations/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 
 class TotalPriceAndCartSection extends StatefulWidget {
-  const TotalPriceAndCartSection({super.key, required this.productId});
+  const TotalPriceAndCartSection({super.key, required this.productModel});
 
-  final String productId;
+  //final String productId;
+  final ProductDetailsModel  productModel;
 
   @override
   State<TotalPriceAndCartSection> createState() => _TotalPriceAndCartSectionState();
@@ -57,13 +60,13 @@ class _TotalPriceAndCartSectionState extends State<TotalPriceAndCartSection> {
 
   Future<void> _onTapAddToCardButton() async {
     if (await Get.find<AuthController>().isUserAlreadyLoggedIn()) {
-      // final bool isSuccess = await _cartController.addToCart(
-      //     widget.productModel.id);
-      // if (isSuccess) {
-      //   showSnackBarMessage(context, 'Added to cart');
-      // } else {
-      //   showSnackBarMessage(context, _cartController.errorMessage!);
-      // }
+      final bool isSuccess = await _cartController.addToCart(
+          widget.productModel.id);
+      if (isSuccess) {
+        showSnackBarMessage(context, 'Added to cart');
+      } else {
+        showSnackBarMessage(context, _cartController.errorMessage!);
+      }
     } else {
       Navigator.pushNamed(context, SignInScreen.name);
     }
