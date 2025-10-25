@@ -1,14 +1,23 @@
 import 'package:e_commerce/app/app_colors.dart' show AppColors;
+import 'package:e_commerce/app/controllers/auth_controller.dart';
 import 'package:e_commerce/app/utils/constant.dart';
+import 'package:e_commerce/features/auth/presentations/screens/sign_in_screen.dart';
+import 'package:e_commerce/features/products/presentation/controllers/add_to_cart_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-class TotalPriceAndCartSection extends StatelessWidget {
-  const TotalPriceAndCartSection({super.key});
+class TotalPriceAndCartSection extends StatefulWidget {
+  const TotalPriceAndCartSection({super.key, required this.productId});
 
+  final String productId;
 
+  @override
+  State<TotalPriceAndCartSection> createState() => _TotalPriceAndCartSectionState();
+}
 
-
-
+class _TotalPriceAndCartSectionState extends State<TotalPriceAndCartSection> {
+  final AddToCartController _cartController = AddToCartController();
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
@@ -30,11 +39,33 @@ class TotalPriceAndCartSection extends StatelessWidget {
               Text('Price',style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),),
               Text('${takaSign}100',style: textTheme.titleMedium?.copyWith(color:AppColors.themeColor ),),
             ],),
-          SizedBox(
-              width:120,
-              child: FilledButton(onPressed: () {}, child: Text('Add to Cart')))
+          GetBuilder(
+            init: _cartController,
+            builder: (controller) {
+              return SizedBox(
+                  width:120,
+                  child: Visibility(
+                    visible: controller.addToCartInProgress == false,
+                      replacement: CircularProgressIndicator(),
+                      child: FilledButton(onPressed:_onTapAddToCardButton, child: Text('Add to Cart'))));
+            }
+          )
         ],
       ),
     );
+  }
+
+  Future<void> _onTapAddToCardButton() async {
+    if (await Get.find<AuthController>().isUserAlreadyLoggedIn()) {
+      // final bool isSuccess = await _cartController.addToCart(
+      //     widget.productModel.id);
+      // if (isSuccess) {
+      //   showSnackBarMessage(context, 'Added to cart');
+      // } else {
+      //   showSnackBarMessage(context, _cartController.errorMessage!);
+      // }
+    } else {
+      Navigator.pushNamed(context, SignInScreen.name);
+    }
   }
 }

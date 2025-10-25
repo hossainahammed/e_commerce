@@ -176,8 +176,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                 ),
               ),
-              TotalPriceAndCartSection(
-              //productModel: controller.productDetails!,
+              TotalPriceAndCartSection(productId: widget.productId,
+             // productModel: controller.productDetails!,
               ),
             ],
           );
