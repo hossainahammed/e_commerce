@@ -2,6 +2,7 @@ import 'package:e_commerce/features/carts/presentation/screens/cart_screen.dart'
 import 'package:e_commerce/features/category/presentation/screens/category_list_screen.dart';
 import 'package:e_commerce/features/home/presentation/controllers/home_slider_controller.dart';
 import 'package:e_commerce/features/home/presentation/screens/home_screen.dart';
+import 'package:e_commerce/features/shared/presentations/controllers/category_controller.dart';
 import 'package:e_commerce/features/shared/presentations/controllers/main_nav_controller.dart';
 import 'package:e_commerce/features/wishlist/presentation/screens/wish_list_screen.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,7 @@ class _BottomNavHolderScreenState extends State<BottomNavHolderScreen> {
   void initState() {
     super.initState();
     Get.find<HomeSliderController>().getHomeSliders();
+    Get.find<CategoryController>().getCategoryList();
   }
 
   @override
