@@ -50,7 +50,7 @@ class _VerifyOtpScreenState extends State<VerifyOtpScreen> {
                 ),
                 const SizedBox(height: 24),
                 PinCodeTextField(
-                  length:6 ,
+                  length:4 ,
                   obscureText: false,
                   keyboardType: TextInputType.number,
                   pinTheme: PinTheme(shape: PinCodeFieldShape.box),

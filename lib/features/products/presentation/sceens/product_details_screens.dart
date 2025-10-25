@@ -57,7 +57,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   child: Column(
                     children: [
                       ProductImageSlider(
-                        //imageUrls: controller.productDetails?.photos ?? [],
+                        imageUrls: controller.productDetails?.photos ?? [],
                       ),
                       Padding(
                         padding: const EdgeInsets.all(16),

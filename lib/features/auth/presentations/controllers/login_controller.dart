@@ -2,7 +2,6 @@ import 'package:e_commerce/app/urls.dart';
 import 'package:e_commerce/core/models/network_response.dart';
 import 'package:e_commerce/core/services/network_caller.dart';
 import 'package:e_commerce/features/auth/data/models/login_request_model.dart';
-import 'package:e_commerce/features/auth/data/models/sign_up_request_model.dart';
 import 'package:get/get.dart';
 
 import '../../../shared/data/models/user_model.dart';
