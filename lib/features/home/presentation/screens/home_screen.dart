@@ -4,6 +4,10 @@ import 'package:e_commerce/features/shared/presentations/controllers/main_nav_co
 import 'package:e_commerce/features/shared/presentations/widgets/Product_category_item.dart';
 import 'package:e_commerce/features/shared/presentations/widgets/centered_circular_progress.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_sslcommerz/model/SSLCSdkType.dart';
+import 'package:flutter_sslcommerz/model/SSLCommerzInitialization.dart';
+import 'package:flutter_sslcommerz/model/SSLCurrencyType.dart';
+import 'package:flutter_sslcommerz/sslcommerz.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
@@ -156,4 +160,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
+
 }
