@@ -17,4 +17,16 @@ class Urls {
 
   static const String addToCartUrl = '$_baseUrl/cart';
   static const String cartListUrl = '$_baseUrl/cart';
+  static const String wishListUrl = '$_baseUrl/wishlist';
+
+
+  static String newProductsUrl(int pageNo, int pageSize) =>
+      '$_baseUrl/products?count=$pageSize&page=$pageNo&sort=new';
+
+  static String specialProductsUrl(int pageNo, int pageSize) =>
+      '$_baseUrl/products?count=$pageSize&page=$pageNo&sort=special';
+
+  static String popularProductsUrl(int pageNo, int pageSize) =>
+      '$_baseUrl/products?count=$pageSize&page=$pageNo&sort=popular';
+
 }
